@@ -7,17 +7,6 @@ GenRecEdit brings model editing to generative recommendation for cold-start scen
 3. solving and applying GenRecEdit weight updates,
 4. evaluating the edited model.
 
-The implementation follows the experimental pipeline used in:
-
-```bibtex
-@article{shen2026bringing,
-  title={Bringing Model Editing to Generative Recommendation in Cold-Start Scenarios},
-  author={Shen, Chenglei and Shi, Teng and Yu, Weijie and Zhang, Xiao and Xu, Jun},
-  journal={arXiv preprint arXiv:2603.14259},
-  year={2026}
-}
-```
-
 ## Repository Layout
 
 ```text
@@ -52,7 +41,7 @@ pip install -r requirements.txt
 The scripts use GPU `0` by default. Override it when needed:
 
 ```bash
-CUDA_VISIBLE_DEVICES=1 bash Scripts/rec_train.sh Cell_Phones_and_Accessories
+CUDA_VISIBLE_DEVICES=1 bash Scripts/rec_train.sh Video_Games
 ```
 
 ## Reproducible Workflow
@@ -64,7 +53,7 @@ Run the stages in this order.
 Train TIGER for the target category:
 
 ```bash
-bash Scripts/rec_train.sh Cell_Phones_and_Accessories
+bash Scripts/rec_train.sh Video_Games
 ```
 
 `rec_train.sh` writes checkpoints under:
@@ -91,7 +80,7 @@ bash Scripts/prepare_data.sh
 The category list is configured in [Scripts/prepare_data.sh](Scripts/prepare_data.sh):
 
 ```bash
-CATEGORIES=(Cell_Phones_and_Accessories)
+CATEGORIES=(Video_Games)
 ```
 
 For each category, the script writes:
@@ -120,7 +109,7 @@ bash Scripts/edit.sh
 The main knobs are defined near the top of [Scripts/edit.sh](Scripts/edit.sh):
 
 ```bash
-CATEGORIES=(Cell_Phones_and_Accessories)
+CATEGORIES=(Video_Games)
 EDIT_POSTFIXES=(cold_test_augmented)
 COV_LAMBDAS=(1000)
 NUMBER_KNOWLEDGES=(10)
@@ -148,31 +137,17 @@ iid_ratio@K
 ndcg@K
 ```
 
-Here `ndcg@K` uses the prefix-level cold-start target matching used by GenRecEdit.
 
 ## Category Configuration
 
-The default packaged category is:
 
-```text
-Cell_Phones_and_Accessories
-```
-
-To run another supported category, keep the category consistent across all stages:
-
-1. pass it to `Scripts/rec_train.sh`,
-2. update `CATEGORIES=(...)` in `Scripts/prepare_data.sh`,
-3. update `CATEGORIES=(...)` in `Scripts/edit.sh`.
-
-The current scripts define default `max_rows` values for:
+To run supported category, keep the category consistent across all stages:
 
 ```text
 Video_Games
 Cell_Phones_and_Accessories
 Software
 ```
-
-Add a category-specific `max_rows` branch in the scripts before running a new category.
 
 ## Outputs
 
