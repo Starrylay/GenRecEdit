@@ -56,9 +56,9 @@ Create a clean Python environment and install the project requirements:
 
 ```bash
 cd GenRecEdit-open-source
-python -m venv .venv
-source .venv/bin/activate
-pip install -U pip
+conda create -n genrecedit python=3.10 -y
+conda activate genrecedit
+python -m pip install -U pip
 pip install -r requirements.txt
 ```
 
