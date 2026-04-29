@@ -1,0 +1,61 @@
+# Overwritting configs
+metadata: sentence    # Overwrite data config file, TIGER only supports sentence metadata
+lr: 0.003             # Overwrite learning rate
+weight_decay: 0.05    # Overwrite weight decay
+
+# Config for sentence embedding model
+sent_emb_model: sentence-transformers/sentence-t5-base
+sent_emb_batch_size: 512
+sent_emb_dim: 768
+sent_emb_pca: 128     # -1 means no PCA, otherwise PCA dimension
+
+# Config for RQ
+rq_n_codebooks: 4
+rq_codebook_size: 256
+
+# Config for RQ-VAE
+rqvae_hidden_sizes: [2048,1024,512,256,128]
+rqvae_dropout: 0.0
+rqvae_lr: 0.001
+ravae_batch_size: 2048
+rqvae_epoch: 10000
+# rqvae_verbose: 100
+# rqvae_epoch: 1000
+rqvae_verbose: 50
+rqvae_beta: 0.001
+
+# TODO: for debug
+# rqvae_epoch: 2
+# rqvae_verbose: 1
+
+rqvae_sk_epsilon: 0.003
+rqvae_sk_iters: 10
+
+rqvae_quant_weight: 1.0
+rqvae_bn: False
+rqvae_alpha: 0.01
+n_clusters: 10
+kmeans_init: True
+kmeans_iters: 100
+sample_strategy: all
+
+CF_emb_path: output/AmazonReviews2014_Sports_and_Outdoors/SASRec_Seq-20/item_embs/20250911-113247.pth
+
+# Config for TIGER
+n_user_tokens: 1      # Number of user tokens hashed from user ids
+max_item_seq_len: 20  # Maximum #items in a sequence
+# max_item_seq_len: 50  # Maximum #items in a sequence
+num_beams: 50         # Number of beams for beam search
+val_num_beams: 10
+temperature: 1.0
+
+# Config for T5
+num_layers: 6
+num_decoder_layers: 6
+d_model: 128
+d_ff: 1024
+num_heads: 6
+d_kv: 64
+dropout_rate: 0.1
+activation_function: "relu"
+feed_forward_proj: "relu"

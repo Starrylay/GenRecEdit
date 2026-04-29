@@ -1,0 +1,4 @@
+# category: Sports_and_Outdoors
+metadata: none  # none / raw / sentence
+split: timestamp # last_out / timestamp
+kcore: 5core    # 5core / 0core

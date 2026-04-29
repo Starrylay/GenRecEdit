@@ -1,0 +1,10 @@
+# Overwritting configs
+train_batch_size: 256
+eval_batch_size: 256
+lr: 3e-3
+
+max_item_seq_len: 20
+
+n_layers: 2
+d_model: 64
+dropout: 0.1
