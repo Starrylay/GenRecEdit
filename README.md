@@ -78,16 +78,6 @@ The downstream data-preparation and editing scripts expect the base checkpoint t
 ```text
 data/ckpt/TIGER_<category>/genrec_default_ori.pth
 ```
-
-After training, rename or copy the checkpoint produced by `rec_train.sh`:
-
-```bash
-category=Cell_Phones_and_Accessories
-ckpt_dir="data/ckpt/TIGER_${category}"
-latest_ckpt="$(ls -t "${ckpt_dir}"/genrec_default-*.pth | head -n 1)"
-cp "${latest_ckpt}" "${ckpt_dir}/genrec_default_ori.pth"
-```
-
 This explicit rename is required because the next stages load `genrec_default_ori.pth`.
 
 ### 2. Prepare Edit Requests
