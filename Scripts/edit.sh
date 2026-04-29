@@ -18,18 +18,10 @@ for category in "${CATEGORIES[@]}"; do
 
   if [[ "$category" == "Video_Games" ]]; then
     max_rows=0.5
-  elif [[ "$category" == "Office_Products" ]]; then
-    max_rows=0.1
   elif [[ "$category" == "Cell_Phones_and_Accessories" ]]; then
     max_rows=0.1
-  elif [[ "$category" == "Musical_Instruments" ]]; then
-    max_rows=0.5
-  elif [[ "$category" == "Industrial_and_Scientific" ]]; then
-    max_rows=0.5
   elif [[ "$category" == "Software" ]]; then
     max_rows=0.5
-  elif [[ "$category" == "Baby_Products" ]]; then
-    max_rows=0.2
   else
     echo "Unknown category: $category"
     exit 1
